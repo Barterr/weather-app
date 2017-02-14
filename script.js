@@ -5,7 +5,7 @@ function getWeather(data) {
   "use strict";
   var categories = ["famous", "movies"];
   
-  data["q"] = "Florianopolis";
+  data["q"] = "New York";
   data["APPID"] = "805418e886455718d75d86ba7717ac34";
   $.ajax({
     url: '//api.openweathermap.org/data/2.5/weather?',
