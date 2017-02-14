@@ -30,13 +30,14 @@ function getWeather(data) {
 
 $(document).ready(function () {
   "use strict";
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var data = {};
-      // data["lat"] = position.coords.latitude;
-      // data["lon"] = position.coords.longitude;
-      getWeather(data);
-    });
-  }
-  // getWeather();
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     var data = {};
+  //     // data["lat"] = position.coords.latitude;
+  //     // data["lon"] = position.coords.longitude;
+  //     getWeather(data);
+  //   });
+  // }
+  var data = {};
+  getWeather(data);
 });
