@@ -5,7 +5,7 @@ function getWeather(data) {
   "use strict";
   var categories = ["famous", "movies"];
   
-  // data["q"] = "Florianopolis";
+  data["q"] = "Florianopolis";
   data["APPID"] = "805418e886455718d75d86ba7717ac34";
   $.ajax({
     url: '//api.openweathermap.org/data/2.5/weather?',
@@ -33,10 +33,10 @@ $(document).ready(function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var data = {};
-      data["lat"] = position.coords.latitude;
-      data["lon"] = position.coords.longitude;
+      // data["lat"] = position.coords.latitude;
+      // data["lon"] = position.coords.longitude;
       getWeather(data);
     });
   }
-  getWeather();
+  // getWeather();
 });
