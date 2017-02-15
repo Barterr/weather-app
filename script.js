@@ -2,10 +2,8 @@
 /*global $, jQuery */
 
 function getWeather(data) {
-  "use strict";
-  var categories = ["famous", "movies"];
-  
-  data["q"] = "New York";
+  "use strict";  
+  data["q"] = "New Hampshire";
   data["APPID"] = "805418e886455718d75d86ba7717ac34";
   // data["client_id"] = "9TWAIhUfekaWw4KFvByYq";
   // data["client_secret"] = "1P5Cp3eLLlejzCRqS3FGJdle6QfGplR3mnlnrG6i";
@@ -14,9 +12,9 @@ function getWeather(data) {
   $.ajax({
     url: '//api.openweathermap.org/data/2.5/weather?',
     // url: '//api.aerisapi.com/places/search?',
-    type: 'GET',
+    // type: 'GET',
     data: data,
-    dataType: 'jsonp',
+    dataType: 'json',
     success: function(data) {
       console.log(JSON.stringify(data));
 
