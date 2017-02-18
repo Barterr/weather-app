@@ -7,7 +7,7 @@ function getWeather() {
   // console.log(lon);
   // console.log('http://cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/'+lat+','+lon);
   $.ajax({
-    url: '//cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/-27.595377799999998,-48.548049899999995',
+    url: 'https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/-27.595377799999998,-48.548049899999995',
     dataType: 'jsonp',
     success: function(data) {
       console.log(JSON.stringify(data));
@@ -27,24 +27,24 @@ function getWeather() {
   });
 };
 
-function codeAddress(location) {
-  geocoder = new google.maps.Geocoder();
-  geocoder.geocode( { 'address': location}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      var data = {};
-      data["lat"] = results[0].geometry.location.lat();
-      data["lon"] = results[0].geometry.location.lng();
-      return data;
+// function codeAddress(location) {
+//   geocoder = new google.maps.Geocoder();
+//   geocoder.geocode( { 'address': location}, function(results, status) {
+//     if (status == google.maps.GeocoderStatus.OK) {
+//       var data = {};
+//       data["lat"] = results[0].geometry.location.lat();
+//       data["lon"] = results[0].geometry.location.lng();
+//       return data;
 
-      // console.log(results[0].geometry.location.lat());
-      // console.log(results[0].geometry.location.lng());
-    } 
-    else {
-      console.log("Geocode was not successful for the following reason: " + status);
-      return false;
-    }
-  });
-}
+//       // console.log(results[0].geometry.location.lat());
+//       // console.log(results[0].geometry.location.lng());
+//     } 
+//     else {
+//       console.log("Geocode was not successful for the following reason: " + status);
+//       return false;
+//     }
+//   });
+// }
 
 $(document).ready(function () {
   "use strict";
