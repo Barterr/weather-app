@@ -8,8 +8,7 @@ function getWeather() {
   // console.log('http://cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/'+lat+','+lon);
   $.ajax({
     url: '//cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/-27.595377799999998,-48.548049899999995',
-    type: 'GET',
-    dataType: 'json',
+    dataType: 'jsonp',
     success: function(data) {
       console.log(JSON.stringify(data));
 
