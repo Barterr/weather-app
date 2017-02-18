@@ -7,7 +7,7 @@ function getWeather() {
   // console.log(lon);
   // console.log('http://cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/'+lat+','+lon);
   $.ajax({
-    url: 'http://cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/-27.595377799999998,-48.548049899999995',
+    url: '//cors.io/?u=https://api.darksky.net/forecast/a29dc7cba1edb350df6260b72ce042c9/-27.595377799999998,-48.548049899999995',
     type: 'GET',
     dataType: 'json',
     success: function(data) {
