@@ -17,11 +17,17 @@ a:active {color:royalblue;}
   padding-left: 30px
 }
 
+.footer {
+  padding: 5px;
+  color: white;
+}
+
 .container {
   background-color: white;
   border-radius: 10px;
   margin-top: 5%;
   padding: 10px;
+  padding-bottom: 20px;
 }
 
 #location {
@@ -47,5 +53,4 @@ a:active {color:royalblue;}
 
   display: flex;
   align-items: center;
-  padding-right: 30px;
 }
