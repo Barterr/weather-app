@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+}
+
+a {
+  text-decoration: none !important;
+  color:royalblue;
+}
+a:focus {
+  outline: none;
+}
+a:visited {color:royalblue;}
+a:hover {color:royalblue;}
+a:active {color:royalblue;}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 5%;
+  padding: 10px;
+}
+
+#location {
+  font-family: 'Righteous', cursive;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  border: 0px;
+  background-color:
+}
+
+.temp {
+  font-family: 'Righteous', cursive;
+  font-size: 3em;
+}
+
+.summary {
+  font-family: 'Righteous', cursive;
+  font-size: 1.2em;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100%; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}

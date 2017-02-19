@@ -5,6 +5,7 @@
   <title>Weather App</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
@@ -17,6 +18,7 @@
 			  src="https://code.jquery.com/jquery-3.1.1.min.js"
 			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 			  crossorigin="anonymous"></script>-->
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="https://darkskyapp.github.io/skycons/skycons.js"></script>
   <script src="./script.js"></script>
@@ -24,20 +26,33 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron">
-      <h1 class="text-center" id="location">City</h1>
-      <div class="row text-center">
-        <div class="col-xs-6 col-sm-6 offset-sm-3">
-          <div class="row">
-            <div class="col-sm-6 text-right">
-              <canvas id="skycon" width="64" height="64"></canvas>
-            </div>
-            <div class="col-sm-6 text-left temp">
-              <span id="temp">30</span> &#176;<a href="#" id="unit">C</a>
-            </div>
-            <div class="col-sm-8 offset-sm-2">
+    <div class="input-group">
+      <input id="location" type="text" class="form-control text-center" placeholder="City" aria-describedby="City"></input>
+    </div>
+    <div class="row text-center">
+      <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+        <div class="row">
+          <div class="col-6 col-sm-6 text-right">
+            <canvas id="skycon" width="128" height="128"></canvas>
+          </div>
+          <div class="col-6 col-sm-6 text-left vertical-center">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <span class="temp">
+                  <span id="temp">0</span> &#176;<a href="#" id="unit">C</a>
+                </span>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <span class="summary">
+                  <span id="summary"></span>
+                </span>
+              </div>
+
 
             </div>
+          </div>
+          <div class="col-sm-8 offset-sm-2">
+
           </div>
         </div>
       </div>

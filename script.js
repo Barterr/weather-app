@@ -1,22 +1,46 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
-/*global $, jQuery */
+/*global $, jQuery, Skycons */
 
 var temp = 0;
+var celsius = true;
 var skycons = new Skycons();
-setSkycon("clear-day");
 
 $(document).ready(function () {
   "use strict";
-   if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(function(position) {
-       var data = {};
-       data["lat"] = position.coords.latitude;
-       data["lon"] = position.coords.longitude;
-       console.log(JSON.stringify(data));
-       codeAddress(data.lat +" "+ data.lon);
-     });
-   }
+  var input = $("input");
+  input[0].selectionStart = input[0].selectionEnd = input.val().length;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var data = {};
+      data["lat"] = position.coords.latitude;
+      data["lon"] = position.coords.longitude;
+      //       console.log(JSON.stringify(data));
+      codeAddress(data.lat +" "+ data.lon);
+    });
+  }
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      var loc = $('#location').val();
+  //    console.log(loc);
+      codeAddress(loc);
+      return false;
+    }
+  });
+  $("#unit").click(function() {
+    celsius = !celsius;
+    setTemp();
+  });
 });
+
+function setTemp() {
+  if (celsius) {
+    $('#temp').html(Math.round(temp));
+    $('#unit').html("C");
+  } else {
+    $('#temp').html(Math.round((temp*9/5)+32));
+    $('#unit').html("F");
+  }
+}
 
 function setSkycon(weatherType) {
   var skycon = null;
@@ -69,21 +93,27 @@ function getWeather(data) {
     },
     dataType: 'jsonp',
     success: function(res) {
-      console.log(JSON.stringify(res, null, 2));
+//      console.log(JSON.stringify(res, null, 2));
       setSkycon(res.currently.icon);
-      $('#location').html(data.city + ", " + data.country);
+      if (data.city != "") {
+        $('#location').val(data.city + ", " + data.country);
+      } else if (data.city2 != "") {
+        $('#location').val(data.city2 + ", " + data.country);
+      } else {
+        $('#location').val(data.country);
+      }
       temp = res.currently.temperature;
-      $('#temp').html(Math.round(temp));
-//      $('#tweet-quote').attr("href", 'https://twitter.com/intent/tweet?text=' + $('#quote').html() + "-" + author);
+      setTemp();
+      $('#summary').html(res.currently.summary);
+      var el = $("input:text").get(0);
+      var elemLen = el.value.length;
+
+      el.selectionStart = elemLen;
+      el.selectionEnd = elemLen;
+      el.focus();
     },
     error: function(err) { 
       console.log(JSON.stringify(err));
-    },
-    complete: function(data) {
-      console.log(JSON.stringify(data.responseText));
-    },
-    beforeSend: function(xhr) {
-      
     }
   });
 };
@@ -98,18 +128,23 @@ function codeAddress(location) {
       data["lat"] = results[0].geometry.location.lat();
       data["lon"] = results[0].geometry.location.lng();
       data["city"] = "";
+      data["city2"] = "";
       data["country"] = "";
-//      console.log("starting");
       for(var i=0; i<results[0].address_components.length; i++) {
 //        console.log(JSON.stringify(results[0].address_components[i], null, 2));
-        if (results[0].address_components[i].types[0] == "locality") {
+        var types = results[0].address_components[i].types;
+        if (types.indexOf("locality") > -1) {
           data["city"] = results[0].address_components[i].long_name;
-        }
-        if (results[0].address_components[i].types[0] == "country") {
+        } else if (types.indexOf("administrative_area_level_2") > -1) {
+          data["city2"] = results[0].address_components[i].long_name;
+        } else if (types.indexOf("country") > -1) {
           data["country"] = results[0].address_components[i].long_name;
+//          if (data["country"].length > 20) {
+//            data["country"] = results[0].address_components[i].short_name;
+//          }
         }
       }
-      console.log(JSON.stringify(data, null, 2));
+//      console.log(JSON.stringify(data, null, 2));
       getWeather(data);
       return true;
     }
