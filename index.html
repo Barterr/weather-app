@@ -18,11 +18,31 @@
 			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 			  crossorigin="anonymous"></script>-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://darkskyapp.github.io/skycons/skycons.js"></script>
   <script src="./script.js"></script>
 </head>
 
 <body>
-  
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="text-center" id="location">City</h1>
+      <div class="row text-center">
+        <div class="col-xs-6 col-sm-6 offset-sm-3">
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <canvas id="skycon" width="64" height="64"></canvas>
+            </div>
+            <div class="col-sm-6 text-left temp">
+              <span id="temp">30</span> &#176;<a href="#" id="unit">C</a>
+            </div>
+            <div class="col-sm-8 offset-sm-2">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
