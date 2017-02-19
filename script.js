@@ -5,6 +5,19 @@ var temp = 0;
 var skycons = new Skycons();
 setSkycon("clear-day");
 
+$(document).ready(function () {
+  "use strict";
+   if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function(position) {
+       var data = {};
+       data["lat"] = position.coords.latitude;
+       data["lon"] = position.coords.longitude;
+       console.log(JSON.stringify(data));
+       codeAddress(data.lat +" "+ data.lon);
+     });
+   }
+});
+
 function setSkycon(weatherType) {
   var skycon = null;
   switch (weatherType) {
@@ -46,20 +59,6 @@ function setSkycon(weatherType) {
   }
 }
 
-$(document).ready(function () {
-  "use strict";
-   if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(function(position) {
-       var data = {};
-       data["lat"] = position.coords.latitude;
-       data["lon"] = position.coords.longitude;
-       console.log(JSON.stringify(data));
-       codeAddress(data.lat +" "+ data.lon);
-     });
-   }
-});
-
-
 function getWeather(data) {
   "use strict";
   $.ajax({
@@ -71,7 +70,7 @@ function getWeather(data) {
     dataType: 'jsonp',
     success: function(res) {
       console.log(JSON.stringify(res, null, 2));
-      setSkycon(data.currently.icon);
+      setSkycon(res.currently.icon);
       $('#location').html(data.city + ", " + data.country);
       temp = res.currently.temperature;
       $('#temp').html(Math.round(temp));
@@ -91,7 +90,8 @@ function getWeather(data) {
 
 function codeAddress(location) {
   geocoder = new google.maps.Geocoder();
-  geocoder.geocode( { 'address': location}, function(results, status) {
+  geocoder.geocode( {'address': location},
+                   function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
 //      console.log(JSON.stringify(results[0], null, 2));
       var data = {};
