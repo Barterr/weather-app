@@ -9,9 +9,9 @@ a {
 a:focus {
   outline: none;
 }
-a:visited {color:royalblue;}
-a:hover {color:royalblue;}
-a:active {color:royalblue;}
+a:visited {color:dodgerblue;}
+a:hover {color:dodgerblue;}
+a:active {color:dodgerblue;}
 
 #skycon {
   padding-left: 30px
@@ -20,6 +20,10 @@ a:active {color:royalblue;}
 .footer {
   padding: 5px;
   color: white;
+}
+
+.footer>div>p>a {
+  color: dodgerblue;
 }
 
 .container {
