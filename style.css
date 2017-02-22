@@ -1,5 +1,6 @@
 body {
   background-color: black;
+  font-size: 16px;
 }
 
 a {
@@ -14,11 +15,11 @@ a:hover {color:dodgerblue;}
 a:active {color:dodgerblue;}
 
 #skycon {
-  padding-left: 30px
+  padding-left: 30px;
 }
 
 .footer {
-  padding: 5px;
+  padding-top: 5px;
   color: white;
 }
 
@@ -26,29 +27,36 @@ a:active {color:dodgerblue;}
   color: dodgerblue;
 }
 
+.footer>div>p {
+  margin: 0px;
+}
+
+.credits {
+  font-size: 80%
+}
+
 .container {
   background-color: white;
   border-radius: 10px;
   margin-top: 5%;
-  padding: 10px;
   padding-bottom: 20px;
 }
 
 #location {
   font-family: 'Righteous', cursive;
-  font-size: 2.5em;
+  font-size: 200%;
   margin-bottom: 20px;
   border: 0px;
 }
 
 .temp {
   font-family: 'Righteous', cursive;
-  font-size: 3em;
+  font-size: 300%;
 }
 
 .summary {
   font-family: 'Righteous', cursive;
-  font-size: 1.2em;
+  font-size: 150%;
 }
 
 .vertical-center {
